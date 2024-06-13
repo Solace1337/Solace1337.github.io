@@ -5,20 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
     <style>
+        
         body{
             background-color: gray;
             
         }
         .container{
+            
             width: 80%;
             margin: auto;
             overflow: hidden;
         }
         header{
-            background: white;
+            background: rgb(53, 142, 184);
             color: black;
 
 
+        }
+        .body-container{
+            background: aliceblue;
+        }
+        .grid-container{
+            display: grid;
+        }
+        .grid-item{
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
         }
 
 
@@ -39,9 +53,23 @@
                 <ul>
                     <li><a href="index.html">About Me</a></li>
                     <li><a href='experiences.html'>Experiences</a></li>
-                    <li><a href="main3.html">main3</a></li>
+                    <li><a href="contact-info.html">main3</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <div class="body-container">
+        <section id="about" class="about">
+
+            <h1>I'm Joshua Rosas</h1>
+            <div class="'grid-container">
+                <div class="grid-item">
+                    <p>I am currently a Senior college student at CCNY, working towards my bachelors in Computer Science.
+                    While I am trying to finish my degree during the summer, I am looking for jobs and internships
+                    relating to IT and Data science. 
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
