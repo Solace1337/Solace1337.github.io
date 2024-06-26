@@ -3,63 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <style>
-        
-        body{
-            background: rgba(255, 255, 255,0.8);
-            background-image: url('backgroundpic.jpg');
-            background-size: cover;
-            position: relative;
-            margin: 0;
-            padding: 0;
-        }
-        .container{
-            
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header{
-            background: rgb(53, 142, 184);
-            color: black;
-
-
-        }
-        main{
-            background-color:grey;
-            position:  relative;
-            margin:auto;
-        }
-        
-       
-
-
-
-
-
-
-
-    </style>
-
-
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Current Pages</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Main Page</a></li>
-                    <li><a href='infopage.html'>About Me</a></li>
-                    <li><a href="contact-info.html">Contacts</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Course (optional)</th>
+                    <th>Grade</th>
+                    <th>Credits</th>
+                </tr>
+            </thead>
+            <tbody id="courses">
+                <tr>
+                    <td><input type="checkbox" checked> Course #1</td>
+                    <td><input type="text" class="grade" value="A"></td>
+                    <td><input type="number" class="credits"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" checked> Course #2</td>
+                    <td><input type="text" class="grade" value="B+"></td>
+                    <td><input type="number" class="credits"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" checked> Course #3</td>
+                    <td><input type="text" class="grade" value="B+"></td>
+                    <td><input type="number" class="credits"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <button onclick="addRow()">+ Add row</button>
+        <div class="buttons">
+            <button onclick="calculateGPA()">= Calculate</button>
+            <button onclick="resetForm()">× Reset</button>
         </div>
-    </header>
-    <main>
-        <div id="main-container">
-            <p>This is the main page, click any of the links on top</p>
+        <div class="gpa-result">
+            GPA: <span id="gpa"></span>
         </div>
-    </main>
+    </div>
+    <script src="script.js"></script>
 </body>
+</html>
+
