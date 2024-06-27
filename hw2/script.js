@@ -8,7 +8,7 @@ function addRow() {
     const cell1 = newRow.insertCell(0);
     const cell2 = newRow.insertCell(1);
     const cell3 = newRow.insertCell(2);
-    cell1.innerHTML = '<input type="checkbox" checked> Course';
+    cell1.innerHTML = '<input type="checkbox" checked>Course';
     cell2.innerHTML = '<input type="text" class="grade">';
     cell3.innerHTML = '<input type="number" class="credits">';
 }
@@ -80,14 +80,13 @@ function gradeToPoint(grade) {
         case 'D+': return 1.3;
         case 'D': return 1.0;
         case 'F': return 0.0;
-        default: return null;  // Handle invalid grades
+        default: return null;  
     }
 }
 
 function resetForm() {
     document.querySelectorAll('.grade, .credits').forEach(input => input.value = '');
     document.getElementById('gpa').innerText = '';
-    // Remove event listeners to avoid redundant calculations
     disableAutoUpdate();
 }
 
