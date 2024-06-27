@@ -1,4 +1,4 @@
-/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -24,16 +24,19 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    
 }
 
 th, td {
     border: 1px solid #000000;
     padding: 8px;
     text-align: left;
+    
 }
 
 th {
-    background-color: #e0d4b8;
+    background-color: #e9d29d;
+
 }
 
 .buttons {
@@ -64,7 +67,7 @@ button {
     font-size: 1.2em;
 }
 
-/* Media Queries */
+
 @media (max-width: 600px) {
     .container {
         padding: 10px;
