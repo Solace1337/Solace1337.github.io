@@ -1,4 +1,7 @@
-// script.js
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('calculateButton').addEventListener('click', calculateAndEnableAutoUpdate);
+});
+
 function addRow() {
     const table = document.getElementById('courses');
     const newRow = table.insertRow();
@@ -10,6 +13,24 @@ function addRow() {
     cell3.innerHTML = '<input type="number" class="credits">';
 }
 
+function calculateAndEnableAutoUpdate() {
+    calculateGPA();
+    enableAutoUpdate();
+}
+
+function enableAutoUpdate() {
+    const grades = document.querySelectorAll('.grade');
+    const credits = document.querySelectorAll('.credits');
+
+    grades.forEach(grade => {
+        grade.addEventListener('input', calculateGPA);
+    });
+
+    credits.forEach(credit => {
+        credit.addEventListener('input', calculateGPA);
+    });
+}
+
 function calculateGPA() {
     const grades = document.querySelectorAll('.grade');
     const credits = document.querySelectorAll('.credits');
@@ -17,12 +38,30 @@ function calculateGPA() {
     let totalCredits = 0;
 
     grades.forEach((grade, index) => {
-        const credit = parseFloat(credits[index].value);
-        if (!isNaN(credit) && grade.value) {
-            totalCredits += credit;
-            totalPoints += gradeToPoint(grade.value) * credit;
+        const gradeValue = grade.value.trim();
+        const creditValue = credits[index].value.trim();
+        
+        if (gradeValue === '' || creditValue === '') {
+            console.log(`Skipping row ${index + 1}: Missing grade or credit`);
+            return;
         }
+
+        const credit = parseFloat(creditValue);
+        const gradePoint = gradeToPoint(gradeValue);
+
+        if (isNaN(credit) || gradePoint === null) {
+            console.log(`Skipping row ${index + 1}: Invalid grade or credit`);
+            return;
+        }
+
+        totalCredits += credit;
+        totalPoints += gradePoint * credit;
     });
+
+    if (totalCredits === 0) {
+        document.getElementById('gpa').innerText = 'N/A';
+        return;
+    }
 
     const gpa = totalPoints / totalCredits;
     document.getElementById('gpa').innerText = gpa.toFixed(2);
@@ -41,11 +80,28 @@ function gradeToPoint(grade) {
         case 'D+': return 1.3;
         case 'D': return 1.0;
         case 'F': return 0.0;
-        default: return 0.0;
+        default: return null;  // Handle invalid grades
     }
 }
 
 function resetForm() {
     document.querySelectorAll('.grade, .credits').forEach(input => input.value = '');
     document.getElementById('gpa').innerText = '';
+    // Remove event listeners to avoid redundant calculations
+    disableAutoUpdate();
 }
+
+function disableAutoUpdate() {
+    const grades = document.querySelectorAll('.grade');
+    const credits = document.querySelectorAll('.credits');
+
+    grades.forEach(grade => {
+        grade.removeEventListener('input', calculateGPA);
+    });
+
+    credits.forEach(credit => {
+        credit.removeEventListener('input', calculateGPA);
+    });
+}
+
+
