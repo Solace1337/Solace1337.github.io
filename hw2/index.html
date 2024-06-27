@@ -23,7 +23,7 @@
                     <td><input type="number" class="credits"></td>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" checked> Course #2</td>
+                    <td><input type="checkbox" unchecked> Course #2</td>
                     <td><input type="text" class="grade" value=""></td>
                     <td><input type="number" class="credits"></td>
                 </tr>
@@ -35,10 +35,10 @@
                 
             </tbody>
         </table>
-        <button onclick="addRow()">Add row</button>
+        <button class="add-row" onclick="addRow()">Add row</button>
         <div class="buttons">
-            <button onclick="calculateGPA()">Calculate</button>
-            <button onclick="resetForm()">Reset</button>
+            <button class = "calculate" onclick="calculateGPA()">Calculate</button>
+            <button class= "reset" onclick="resetForm()">Reset</button>
         </div>
         <div class="gpa-result">
             GPA: <span id="gpa"></span>

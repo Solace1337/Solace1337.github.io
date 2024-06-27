@@ -47,6 +47,16 @@ button {
     margin: 5px;
     flex: 1 1 auto;
     max-width: calc(50% - 10px);
+    border-radius: 25px;
+}
+.add-row{
+    background-color: rgb(16, 130, 206);
+}
+.calculate{
+    background-color: rgb(241, 241, 87);
+}
+.reset{
+    background-color: rgb(230, 76, 76);
 }
 
 .gpa-result {
